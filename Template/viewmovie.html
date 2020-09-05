@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<html>
+<head>
+ <link rel="stylesheet" href="/static/styles.css">
+ <style>
+	tr:nth-child(even) {background-color: #f2f2f2;}
+	.tstyle{
+		width: 900px;
+		font-family:Arial,Verdana,sans-serif;
+  font-size:1.3em;
+  color:#00f;
+	}
+ </style>
+</head>
+<body>
+  <body>
+		
+
+		<div id="site-content">
+			<header class="site-header">
+				<div class="container">
+					<a href="viewmovie.html" id="branding">
+							<img src="/static/images/mlogo.png" alt="" class="logo">
+							<div class="logo-copy">
+								<h1 class="site-title">MOVIE HUT</h1>
+								<small class="site-description"></small>
+							</div>
+						
+					</a> <!-- #branding -->
+
+					<div class="main-navigation">
+						
+						<ul class="menu">
+							
+                                <li class="menu-item"><a href="/addmovie">ADD MOVIES</a></li>
+                                <li class="menu-item"><a href="/viewmovie">VIEW MOVIES</a></li>
+                                <li class="menu-item"><a href="/editmovie">EDIT MOVIE</a></li>
+								<li class="menu-item"><a href="/deletemovie">DELETE MOVIE</a></li>
+								<li class="menu-item"><a href="/logout" name="logout">LOGOUT</a></li>
+						</ul> <!-- .menu -->
+
+						
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</header>
+			<main class="main-content">
+					
+						
+							<div class="content">
+	
+									{%for a in d %}
+						<div class="container">
+											
+		<div class="row">
+<div class="col-md-4">
+												
+	<h2 class="section-title"> {{a.0}}</h2>
+	<form method="POST">
+			{% csrf_token %}
+	<input type="text" name="movie" value="{{a.0}}" hidden > 
+												
+<ul class="movie-schedule">
+		    <li>
+			<h2 class="entry-title">Directed by:</h2>
+			<h2 class="entry-title"><a href="#">{{a.1}}</a></h2>
+			</li>
+		   <li>
+			<h2 class="entry-title">Produced by:</h2>
+			<h2 class="entry-title"><a href="#">{{a.2}}</a></h2>
+			</li>
+			<li>
+		    <h2 class="entry-title">Starring:</h2>
+			<h2 class="entry-title"><a href="#">{{a.3}}</a></h2>
+			</li>
+			
+			<li>
+			<h2 class="entry-title">Music:</h2>
+			<h2 class="entry-title"><a href="#">{{a.4}}</a></h2>
+			</li>
+			<li>
+			<h2 class="entry-title">Writer:</h2>
+			<h2 class="entry-title"><a href="#">{{a.5}}</a></h2>
+			</li>
+			<li>
+			<h2 class="entry-title">Releasing Date:</h2>
+			<h2 class="entry-title"><a href="#">{{a.6}}</a></h2>
+			</li>
+			<li>
+			<h2 class="entry-title">Duration:</h2>
+			<h2 class="entry-title"><a href="#">{{a.7}}</a></h2>
+			</li>
+			<li>
+			<h2 class="entry-title">Language:</h2>
+			<h2 class="entry-title"><a href="#">{{a.8}}</a></h2>
+			</li>
+
+		</form>
+			
+			
+					</ul> <!-- .movie-schedule -->
+	</div>
+	<div class="col-md-4">
+		<img src="/static/images/{{a.9}}" width="220px" height="400px">
+		</div>
+		<div class="col-md-4">
+				<form method="POST" action="/viewreviewrate">
+						{% csrf_token %}
+						<input type="text" name="movie" value="{{a.0}}" hidden> 
+					{%for a1 in d1 %}
+					<ul class="movie-schedule">
+							  
+					<li>
+					<h2 class="entry-title">Review</h2>
+					<h2 class="entry-title"><a href="#">{{a1.0}}</a></h2>
+					</li>						
+	   </ul>
+				   {%endfor%}
+		</form> 
+			</div>
+	
+   </div> 					
+</div> <!-- .row -->
+									 
+											 <!-- .container -->
+	
+											 {%endfor%}
+													
+				
+							</div>
+					 <!-- .container -->
+				</main>
+			<footer class="site-footer">
+					
+			</footer>
+		</div>
+		<!-- Default snippet for navigation -->
+		
+
+
+		<script src="/static/js/jquery-1.11.1.min.js"></script>
+
+		<script src="/static/js/plugins.js"></script>
+		<script src="/static/js/app.js"></script>
+		
+	</body>
+
+</html>

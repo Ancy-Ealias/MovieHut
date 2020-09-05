@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Movie Review</title>
+
+		<!-- Loading third party fonts -->
+		
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="/static/styles.css">
+		
+		<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body>
+		
+
+		<div id="site-content">
+			<header class="site-header">
+				<div class="container">
+					<a href="index.html" id="branding">
+                            <img src="/static/images/mlogo.png" alt="" class="logo">
+							<div class="logo-copy">
+								<h1 class="site-title">MOVIE HUT</h1>
+								<small class="site-description"></small>
+							</div>	
+					</a> <!-- #branding -->
+
+					<div class="main-navigation">
+						
+						<ul class="menu">
+							<li class="menu-item current-menu-item"><a href="/index">HOME</a></li>
+							<li class="menu-item"><a href="/sign">SIGN IN</a></li>
+							
+						</ul> <!-- .menu -->
+
+						
+					</div> <!-- .main-navigation -->
+
+					
+				</div>
+			</header>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+                        	{%for a in d %}
+						<div class="row">
+						
+									<div class="col-md-4">
+										<div class="latest-movie">
+											
+												<ul class="movie-schedule">
+														<li><h2 class="entry-title">Movie:</h2>
+															<h2 class="entry-title"><a href="#">{{a.0}}</a></h2>
+														</li>
+														<li><h2 class="entry-title">Directed by:</h2>
+															<h2 class="entry-title"><a href="#">{{a.1}}</a></h2>
+														</li>
+														<li><h2 class="entry-title">Produced by:</h2>
+															<h2 class="entry-title"><a href="#">{{a.2}}</a></h2>
+														</li>
+														<li><h2 class="entry-title">Starring:</h2>
+															<h2 class="entry-title"><a href="#">{{a.3}}</a></h2>
+                                                        </li>
+                                                        <li>
+                                                            <h2 class="entry-title">Music:</h2>
+                                                            <h2 class="entry-title"><a href="#">{{a.4}}</a></h2>
+                                                            </li>
+                                                            <li>
+                                                            <h2 class="entry-title">Writer:</h2>
+                                                            <h2 class="entry-title"><a href="#">{{a.5}}</a></h2>
+                                                            </li>
+                                                            <li>
+                                                            <h2 class="entry-title">Releasing Date:</h2>
+                                                            <h2 class="entry-title"><a href="#">{{a.6}}</a></h2>
+                                                            </li>
+                                                            <li>
+                                                            <h2 class="entry-title">Duration:</h2>
+                                                            <h2 class="entry-title"><a href="#">{{a.7}}</a></h2>
+                                                            </li>
+                                                            <li>
+                                                            <h2 class="entry-title">Language:</h2>
+                                                            <h2 class="entry-title"><a href="#">{{a.8}}</a></h2>
+                                                            </li>
+												</ul>
+                                            </div>
+                                        </div>
+                                    
+                                                {%endfor%}
+                                                {%for a in d %}
+                                                <div class="col-md-4">
+                                                        <img src="/static/images/{{a.9}}" width="220px" height="400px">
+                                                 </div>
+                                                 {%endfor%}
+                                                 <div class="col-md-4">
+                                                        <h3>Comments...</h3>
+												{%for a1 in d1 %}
+												<ul class="movie-schedule">
+                                                    
+												<li><h2 class="entry-title">{{a1.0}}</h2>
+      											<h2 class="entry-title"><a href="#">{{a1.1}}</a></h2>
+												</li>
+											   </ul>
+                                                {%endfor%}
+                                            </div>
+                                            <div class="col-md-4">
+												{%for a2 in d2 %}
+												<table width="50px" style="size: 10px; color:darkcyan; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" >
+													<tr> <td>Rating:</td><td>{{a2.0}}<br></td></tr>
+												
+												</table>
+												
+                                                {%endfor%}
+                                                </div>
+									
+                                    
+				
+							</div>
+						</div> <!-- .row -->
+					
+                   
+						
+						<div class="row">
+						
+							
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>
+			<footer class="site-footer">
+
+			</footer>
+		</div>
+		<!-- Default snippet for navigation -->
+		
+
+        <script src="/static/js/jquery-1.11.1.min.js"></script>
+		
+		<script src="/static/js/plugins.js"></script>
+		<script src="/static/js/app.js"></script>
+		
+		
+		
+	</body>
+
+</html>

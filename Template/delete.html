@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<html>
+<head>
+ <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <body>
+		
+
+		<div id="site-content">
+			<header class="site-header">
+				<div class="container">
+						<a href="delete.html" id="branding">
+								<img src="/static/images/mlogo.png" alt="" class="logo">
+								<div class="logo-copy">
+									<h1 class="site-title">MOVIE HUT</h1>
+									<small class="site-description"></small>
+								</div>
+							
+                            </a>
+
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+                                <li class="menu-item"><a href="/addmovie">ADD MOVIES</a></li>
+                                <li class="menu-item"><a href="/viewmovie">VIEW MOVIES</a></li>
+                                <li class="menu-item"><a href="/editmovie">EDIT MOVIE</a></li>
+                                <li class="menu-item"><a href="/deletemovie">DELETE MOVIE</a></li>
+								<li class="menu-item"><a href="/logout" name="logout">LOGOUT</a></li>					
+							</ul> <!-- .menu -->
+
+						
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</header>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+							
+
+						<div class="content">
+							<div class="row">
+								<div class="col-md-4">
+									
+									<div class="contact-form">
+										<form method="POST">
+												{% csrf_token %}
+											Movie Name delete: <input type="text" name="moviename">
+											
+											<input  type="submit" value="DELETE">
+										</form>
+                                       
+                                       
+										
+										
+                                     
+									</div>
+								</div>
+								<div class="col-md-7 col-md-offset-1">
+									<div class="map"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>
+			<footer class="site-footer">
+				
+
+			</footer>
+		</div>
+		<!-- Default snippet for navigation -->
+		
+
+
+		<script src="/static/js/jquery-1.11.1.min.js"></script>
+		
+		<script src="/static/js/plugins.js"></script>
+		<script src="/static/js/app.js"></script>
+		
+	</body>
+
+</html>

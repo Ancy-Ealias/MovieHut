@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<html>
+<head>
+ <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <body>
+		
+
+		<div id="site-content">
+			<header class="site-header">
+				<div class="container">
+					<a href="Moviedetails.html" id="branding">
+							<img src="/static/images/mlogo.png" alt="" class="logo">
+							<div class="logo-copy">
+								<h1 class="site-title">MOVIE HUT</h1>
+								<small class="site-description"></small>
+							</div>
+						
+					</a> <!-- #branding -->
+
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+								<li class="menu-item"><a href="/addmovie">ADD MOVIES</a></li>
+                                <li class="menu-item"><a href="/viewmovie">VIEW MOVIES</a></li>
+                                <li class="menu-item"><a href="/editmovie">EDIT MOVIE</a></li>
+								<li class="menu-item"><a href="/deletemovie">DELETE MOVIE</a></li>
+								<li class="menu-item"><a href="/logout" name="logout">LOGOUT</a></li>
+						</ul> <!-- .menu -->
+
+						<form action="#" class="search-form">
+							<input type="text" placeholder="Search...">
+							<button><i class="fa fa-search"></i></button>
+						</form>
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</header>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+					
+							<h3>Add movie details here</h3>
+						<div class="content">
+							<div class="row">
+								<div class="col-md-4">
+									
+									<div class="contact-form">
+										<form method="POST">
+												{% csrf_token %}
+											 <input type="text" name="moviename" placeholder="Movie Name">
+											<input type="text" name="director" placeholder="Director ">
+											 <input type="text" name="producer" placeholder="Producer">
+											<input type="text" name="cast" placeholder="Cast">
+											 <input type="text" name="writer" placeholder="Writer">
+											<input type="text" name="music" placeholder="Music">
+											<input type="text" name="rdate" placeholder="Releasing Date (dd/mm/yyyy)">
+											 <input type="text" name="duration" placeholder="Duration">
+											 <input type="text" name="lang" placeholder="Language">
+											 <input type="file" name="image" value="choose file" placeholder="Image">
+                                    
+											<input  type="submit" value="REGISTER">
+										</form>
+                                       
+                                       
+										
+										
+                                     
+									</div>
+								</div>
+								<div class="col-md-7 col-md-offset-1">
+									<div class="map"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>
+			<footer class="site-footer">
+				
+			</footer>
+		</div>
+		<!-- Default snippet for navigation -->
+		
+
+
+		<script src="/static/js/jquery-1.11.1.min.js"></script>
+		
+		<script src="/static/js/plugins.js"></script>
+		<script src="/static/js/app.js"></script>
+		
+	</body>
+
+</html>

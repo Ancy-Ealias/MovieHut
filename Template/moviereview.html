@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<html>
+<head>
+ <link rel="stylesheet" href="/static/styles.css">
+ <style type="text/css">
+    /* 
+        Use :not with impossible condition so inputs are only hidden 
+        if pseudo selectors are supported. Otherwise the user would see
+        no inputs and no highlighted stars.
+	*/
+	
+    .rating input[type="radio"]:not(:nth-of-type(0)) {
+        /* hide visually */    
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    .rating [type="radio"]:not(:nth-of-type(0)) + label {
+        display: none;
+    }
+    
+    label[for]:hover {
+        cursor: pointer;
+    }
+    
+    .rating .stars label:before {
+        content: "★";
+    }
+    
+    .stars label {
+        color: lightgray;
+    }
+    
+    .stars label:hover {
+        text-shadow: 0 0 1px #000;
+    }
+    
+    .rating [type="radio"]:nth-of-type(1):checked ~ .stars label:nth-of-type(-n+1),
+    .rating [type="radio"]:nth-of-type(2):checked ~ .stars label:nth-of-type(-n+2),
+    .rating [type="radio"]:nth-of-type(3):checked ~ .stars label:nth-of-type(-n+3),
+    .rating [type="radio"]:nth-of-type(4):checked ~ .stars label:nth-of-type(-n+4),
+    .rating [type="radio"]:nth-of-type(5):checked ~ .stars label:nth-of-type(-n+5) {
+        color: orange;
+    }
+    
+    .rating [type="radio"]:nth-of-type(1):focus ~ .stars label:nth-of-type(1),
+    .rating [type="radio"]:nth-of-type(2):focus ~ .stars label:nth-of-type(2),
+    .rating [type="radio"]:nth-of-type(3):focus ~ .stars label:nth-of-type(3),
+    .rating [type="radio"]:nth-of-type(4):focus ~ .stars label:nth-of-type(4),
+    .rating [type="radio"]:nth-of-type(5):focus ~ .stars label:nth-of-type(5) {
+        color: darkorange;
+    }
+</style>
+</head>
+<body>
+  <body>
+		
+
+		<div id="site-content">
+			<header class="site-header">
+				<div class="container">
+					<a href="moviereview.html" id="branding">
+							<img src="/static/images/mlogo.png" alt="" class="logo">
+							<div class="logo-copy">
+								<h1 class="site-title">MOVIE HUT</h1>
+								<small class="site-description"></small>
+							</div>
+						
+					</a> <!-- #branding -->
+
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							
+							<li class="menu-item"><a href="/moviereview">VIEW</a></li>
+					
+							<li class="menu-item"><a href="/logout" name="logout">LOGOUT</a></li>
+							
+						</ul> <!-- .menu -->
+
+						<form action="#" class="search-form">
+							<input type="text" placeholder="Search...">
+							<button><i class="fa fa-search"></i></button>
+						</form>
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</header>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+					
+						<div class="content">
+
+								{%for a in d %}
+								<div class="container">
+										<div class="row"  >
+											
+											<div class="col-md-4"  >
+													
+															<form method="POST" action="">
+																	{% csrf_token %}
+																	<h2 class="section-title"> {{a.0}}</h2>
+																	<input type="text" value="{{a.0}}" name="new1" hidden>
+																	<ul class="movie-schedule">
+																		
+																			<li>
+																			<h2 class="entry-title">Directed by:</h2>
+																			<h2 class="entry-title"><a href="#">{{a.1}}</a></h2>
+																			</li>
+																		   <li>
+																			<h2 class="entry-title">Produced by:</h2>
+																			<h2 class="entry-title"><a href="#">{{a.2}}</a></h2>
+																			</li>
+																			<li>
+																			<h2 class="entry-title">Starring:</h2>
+																			<h2 class="entry-title"><a href="#">{{a.3}}</a></h2>
+																			</li>
+																			
+																			<li>
+																			<h2 class="entry-title">Music:</h2>
+																			<h2 class="entry-title"><a href="#">{{a.4}}</a></h2>
+																			</li>
+																			<li>
+																			<h2 class="entry-title">Writer:</h2>
+																			<h2 class="entry-title"><a href="#">{{a.5}}</a></h2>
+																			</li>
+																			<li>
+																			<h2 class="entry-title">Releasing Date:</h2>
+																			<h2 class="entry-title"><a href="#">{{a.6}}</a></h2>
+																			</li>
+																			<li>
+																			<h2 class="entry-title">Duration:</h2>
+																			<h2 class="entry-title"><a href="#">{{a.7}}</a></h2>
+																			</li>
+																			<li>
+																			<h2 class="entry-title">Language:</h2>
+																			<h2 class="entry-title"><a href="#">{{a.8}}</a></h2>
+																			</li>
+												
+																  </ul>
+																	 
+																	</form> 
+
+												
+														</form>
+   
+			
+												
+											</div>
+						
+											<div class="col-md-4">
+													<img src="/static/images/{{a.9}}" width="200" height="300px"/>
+											</div>
+											<div class="col-md-2">
+												<form method="POST" action="/addreview">
+													{% csrf_token %}
+													 <input type="text" value="{{a.0}}" name="new1" hidden>
+													 <textarea placeholder="Add review here" name="review" style="width: 170px; height: 250px;"></textarea>
+													 <input type="submit" value="submit" id="submit">
+												</form>
+													
+											</div>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<div class="col-md-2">
+													Rating
+													
+				  
+<form method="POST"  action="/addrate">
+		{% csrf_token %}
+		<input type="text" value="{{a.0}}" name="new" hidden>
+    <fieldset >
+        
+       
+        <input id="demo-1" type="radio" name="demo" value="1" > 
+        
+        <input id="demo-2" type="radio" name="demo" value="2">
+        
+        <input id="demo-3" type="radio" name="demo" value="3">
+        
+        <input id="demo-4" type="radio" name="demo" value="4">
+        
+        <input id="demo-5" type="radio" name="demo" value="5">
+       
+        
+        <div class="stars">
+            <label for="demo-1" aria-label="1 star" title="1 star"></label>
+            <label for="demo-2" aria-label="2 stars" title="2 stars"></label>
+            <label for="demo-3" aria-label="3 stars" title="3 stars"></label>
+            <label for="demo-4" aria-label="4 stars" title="4 stars"></label>
+            <label for="demo-5" aria-label="5 stars" title="5 stars"></label>   
+        </div>
+        <input type="submit" value="submit">
+    </fieldset>
+      
+   </form>
+
+																		</div>
+										
+										</div>
+								
+									
+ 
+											
+										</div> <!-- .row -->
+					             
+										 <!-- .container -->
+
+							             {%endfor%}
+                                                
+            
+						</div>
+					</div>
+													
+					movie-schedule -->
+							  
+				</div> <!-- .container -->
+			</main>
+			<footer class="site-footer">
+				
+			</footer>
+		</div>
+		<!-- Default snippet for navigation -->
+		
+
+
+		<script src="/static/js/jquery-1.11.1.min.js"></script>
+
+		<script src="/static/js/plugins.js"></script>
+		<script src="/static/js/app.js"></script>
+		
+	</body>
+
+</html>

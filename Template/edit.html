@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<html>
+<head>
+ <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <body>
+		
+
+		<div id="site-content">
+			<header class="site-header">
+				<div class="container">
+						<a href="edit.html" id="branding">
+								<img src="/static/images/mlogo.png" alt="" class="logo">
+								<div class="logo-copy">
+									<h1 class="site-title">MOVIE HUT</h1>
+									<small class="site-description"></small>
+								</div>
+							
+                            </a>
+
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+                                <li class="menu-item"><a href="/addmovie">ADD MOVIES</a></li>
+                                <li class="menu-item"><a href="/viewmovie">VIEW MOVIES</a></li>
+                                <li class="menu-item"><a href="/editmovie">EDIT MOVIE</a></li>
+                                <li class="menu-item"><a href="/deletemovie">DELETE MOVIE</a></li>
+					
+								<li class="menu-item"><a href="/logout" name="logout">LOGOUT</a></li>				</ul> <!-- .menu -->
+
+						
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</header>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+				
+
+						<div class="content">
+							
+										<form method="POST">
+												{% csrf_token %}
+											Movie Name edit: <input type="text" name="name" >
+											
+                                             
+											<input  type="submit" value="SEARCH" >
+									</form>
+									<form method="POST" action="/edit">
+										{% csrf_token %}
+                                       <div class="row">
+                                        {%for a in d %}
+                                        <table  height="100px" width="200%">
+                                            <tr><td>MOVIE NAME:</td>  <td> <input type="text" name="mname" value="{{a.0}}" ></td></tr>
+                                            <tr><td>DIRECTOR:</td><td><input type="text" name="director" value="{{a.1}}"></td></tr>
+                                            <tr><td> PRODUCER:</td><td> <input type="text" name="producer" value="{{a.2}}" ></td></tr>
+
+                                            <tr><td>STARRING:</td>  <td> <input type="text" name="cast"  value="{{a.3}}"></td></tr>
+                                            <tr><td>WRITER:</td><td><input type="text"  name="writer" value="{{a.4}}"  ></td></tr>
+											<tr><td> MUSIC:</td><td> <input type="text" name="music" value="{{a.5}}" ></td></tr>
+										
+											<tr><td> RELEASING DATE:</td><td> <input type="text" name="rdate" value="{{a.6}}" > </td></tr>
+											<tr><td>DURATION:</td>  <td> <input type="text" name="duration" value="{{a.7}}" ></td></tr>
+											<tr><td>LANGUAGE:</td>  <td> <input type="text" name="lang"  value="{{a.8}}"></td></tr>
+											
+                                        </table>
+                                    </div>
+                                      
+                                    
+                                      <input  type="submit" value="update" name="update">
+                                        {%endfor%}
+										
+                                    </form>
+                                     
+									</div>
+								
+					</div>
+				</div> <!-- .container -->
+			</main>
+			<footer class="site-footer">
+				
+
+			</footer>
+		</div>
+		<!-- Default snippet for navigation -->
+		
+
+
+		<script src="/static/js/jquery-1.11.1.min.js"></script>
+		
+		<script src="/static/js/plugins.js"></script>
+		<script src="/static/js/app.js"></script>
+		
+	</body>
+
+</html>
